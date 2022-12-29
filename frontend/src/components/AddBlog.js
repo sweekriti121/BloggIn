@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStyles } from "./utils";
+const port = process.env.PORT || 5000;
 
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const AddBlog = () => {
@@ -21,7 +22,7 @@ const AddBlog = () => {
   };
   const sendRequest = async () => {
     const res = await axios
-      .post("http://localhost:5000/api/blog/add", {
+      .post(`http://localhost:${port}/api/blog/add`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.imageURL,

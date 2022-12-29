@@ -14,6 +14,8 @@ import {
   import { useNavigate } from "react-router-dom";
   import axios from "axios";
   import { useStyles } from "./utils";
+  const port = process.env.PORT || 5000;
+
   const Blog = ({ title, description, imageURL, userName, isUser, id }) => {
     const classes = useStyles();
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ import {
     };
     const deleteRequest = async () => {
       const res = await axios
-        .delete(`http://localhost:5000/api/blog/${id}`)
+        .delete(`http://localhost:${port}/api/blog/${id}`)
         .catch((err) => console.log(err));
       const data = await res.data;
       return data;

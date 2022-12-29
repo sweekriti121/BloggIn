@@ -4,6 +4,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
+const port = process.env.PORT || 5000;
 
 const Auth = () => {
   const naviagte = useNavigate();
@@ -22,7 +23,7 @@ const Auth = () => {
   };
   const sendRequest = async (type = "login") => {
     const res = await axios
-      .post(`http://localhost:5000/api/user/${type}`, {
+      .post(`http://localhost:${port}/api/user/${type}`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,
