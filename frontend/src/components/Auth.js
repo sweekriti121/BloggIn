@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { authActions } from "../store";
 import { useNavigate } from "react-router-dom";
 const port = process.env.PORT || 5000;
-
+var REACT_APP_BACKEND_URL="https://bloggin-backend.onrender.com";
 const Auth = () => {
   const naviagte = useNavigate();
   const dispath = useDispatch();
@@ -23,7 +23,7 @@ const Auth = () => {
   };
   const sendRequest = async (type = "login") => {
     const res = await axios
-      .post(`http://localhost:${port}/api/user/${type}`, {
+      .post(`${REACT_APP_BACKEND_URL}/api/user/${type}`, {
         name: inputs.name,
         email: inputs.email,
         password: inputs.password,

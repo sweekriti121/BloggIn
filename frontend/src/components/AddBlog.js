@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStyles } from "./utils";
 const port = process.env.PORT || 5000;
-
+var REACT_APP_BACKEND_URL="https://bloggin-backend.onrender.com";
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const AddBlog = () => {
   const classes = useStyles();
@@ -22,7 +22,7 @@ const AddBlog = () => {
   };
   const sendRequest = async () => {
     const res = await axios
-      .post(`http://localhost:${port}/api/blog/add`, {
+      .post(`${REACT_APP_BACKEND_URL}/api/blog/add`, {
         title: inputs.title,
         description: inputs.description,
         image: inputs.imageURL,

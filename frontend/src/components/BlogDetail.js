@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 const labelStyles = { mb: 1, mt: 2, fontSize: "24px", fontWeight: "bold" };
 const port = process.env.PORT || 5000;
-
+var REACT_APP_BACKEND_URL="https://bloggin-backend.onrender.com";
 const BlogDetail = () => {
   const navigate = useNavigate();
   const [blog, setBlog] = useState();
@@ -20,7 +20,7 @@ const BlogDetail = () => {
   };
   const fetchDetails = async () => {
     const res = await axios
-      .get(`http://localhost:${port}/api/blog/${id}`)
+      .get(`${REACT_APP_BACKEND_URL}/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -36,7 +36,7 @@ const BlogDetail = () => {
   },[id]);
   const sendRequest = async () => {
     const res = await axios
-      .put(`http://localhost:${port}/api/blog/update/${id}`, {
+      .put(`${REACT_APP_BACKEND_URL}/api/blog/update/${id}`, {
         title: inputs.title,
         description: inputs.description,
       })

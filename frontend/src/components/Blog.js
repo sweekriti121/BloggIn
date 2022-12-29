@@ -15,7 +15,7 @@ import {
   import axios from "axios";
   import { useStyles } from "./utils";
   const port = process.env.PORT || 5000;
-
+  var REACT_APP_BACKEND_URL="https://bloggin-backend.onrender.com";
   const Blog = ({ title, description, imageURL, userName, isUser, id }) => {
     const classes = useStyles();
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ import {
     };
     const deleteRequest = async () => {
       const res = await axios
-        .delete(`http://localhost:${port}/api/blog/${id}`)
+        .delete(`${REACT_APP_BACKEND_URL}/api/blog/${id}`)
         .catch((err) => console.log(err));
       const data = await res.data;
       return data;
